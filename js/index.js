@@ -20,7 +20,9 @@ const displayPhone = (phones) => {
             <div class="card-body">
             <h6 class="card-title">Name: <span class="text-success">${phone.phone_name}</span></h6>
             <p class="card-text">Brand: <span class="text-success">${phone.brand}</span></p>
-            <div class="text-center"><button onclick="cardDetails('${phone.slug}')" class="btn btn-info text-white">Explore</button></div>
+            <div class="text-center">
+            <button onclick="cardDetails('${phone.slug}')" class="btn btn-info text-white">Explore</button>
+            </div>
             </div>
       </div> `
         displayPhoneData.appendChild(div)
@@ -28,7 +30,6 @@ const displayPhone = (phones) => {
 }
 
 const cardDetails = (detailsValue) => {
-    console.log(detailsValue)
     const url = `https://openapi.programming-hero.com/api/phone/${detailsValue}`
     fetch(url)
         .then(res => res.json())
@@ -43,8 +44,14 @@ const showDetailOnTop = (phone) => {
      <div class="card w-25">
            <div class="p-3"><img src="${phone.image}" class="card-img-top"> </div>
             <div class="card-body">
-            <h6 class="card-title">Name: <span class="text-success">${phone.phone_name}</span></h6>
-            <p class="card-text">Brand: <span class="text-success">${phone.brand}</span></p>
+            <h6 class="card-title  my-0"><span class="fw-bold">Name: </span><span class="text-success">${phone.name}</span></h6>
+            <p class="card-text my-0 fw-normal"><span class="fw-bold">Brand: </span> <span class="text-success">${phone.brand}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">Date: </span><span class="text-success">${phone.releaseDate}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">Storage: </span><span class="text-success">${phone.mainFeatures.storage}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">Display: </span><span class="text-success">${phone.mainFeatures.displaySize}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">Sensors: </span><span class="text-success">${phone.mainFeatures.sensors}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">Bluetooth: </span><span class="text-success">${phone.others.GPS}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">GPS: </span><span class="text-success">${phone.others.WLAN}</span></p>
       </div> 
         `
     detailTag.appendChild(div)
