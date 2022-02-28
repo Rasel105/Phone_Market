@@ -41,8 +41,10 @@ const showDetailOnTop = (phone) => {
     const detailTag = document.getElementById('details-section');
     const div = document.createElement('div');
     div.innerHTML = `
-     <div class="card w-25">
+     <div class="card w-25 mx-auto">
+        
            <div class="p-3"><img src="${phone.image}" class="card-img-top"> </div>
+           <h4 class="text-center text-info">Details</h4>
             <div class="card-body">
             <h6 class="card-title  my-0"><span class="fw-bold">Name: </span><span class="text-success">${phone.name}</span></h6>
             <p class="card-text my-0 fw-normal"><span class="fw-bold">Brand: </span> <span class="text-success">${phone.brand}</span></p>
