@@ -1,6 +1,8 @@
 
 const spinner = document.getElementById('spinner-secion');
 const error = document.getElementById('error')
+const detailTag = document.getElementById('details-section');
+const displayPhoneData = document.getElementById('main-details');
 const getPhone = () => {
     const inputValue = document.getElementById('input-value')
     let inputValueData = inputValue.value;
@@ -16,6 +18,7 @@ const getPhone = () => {
         <strong>Ohps!</strong> Type your desire phone.
         </div>
         `
+        displayPhoneData.innerHTML = ''
     }
     else {
         const url = `https://openapi.programming-hero.com/api/phones?search=${inputValueData}`;
@@ -49,9 +52,11 @@ const displayPhone = (phones) => {
         <strong>Ohps Sorry! </strong> Not Found!
         </div>
         `
+        displayPhoneData.innerHTML = ''
     }
 
-    const displayPhoneData = document.getElementById('main-details');
+
+    detailTag.innerHTML = ''
     displayPhoneData.innerHTML = ''
     phoneSlice.forEach(phoneSlices => {
         // console.log(phone)
@@ -76,9 +81,9 @@ const displayPhone = (phones) => {
 }
 
 const cardDetails = (detailsValue) => {
-    console.log(detailsValue)
-    const detailsSecond = detailsValue.slice(0, 19)
-    const url = `https://openapi.programming-hero.com/api/phone/${detailsSecond}`
+    // console.log(detailsValue)
+    // const detailsSecond = detailsValue.slice(0, 19)
+    const url = `https://openapi.programming-hero.com/api/phone/${detailsValue}`
     fetch(url)
         .then(res => res.json())
         .then(data => showDetailOnTop(data.data))
@@ -88,8 +93,8 @@ const cardDetails = (detailsValue) => {
 //--------------------------------- show details funcion -----------------------------------
 
 const showDetailOnTop = (phone) => {
-    console.log(phone)
-    const detailTag = document.getElementById('details-section');
+    // console.log(phone)
+
     detailTag.innerHTML = '';
     const div = document.createElement('div');
     div.innerHTML = `
