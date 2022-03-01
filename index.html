@@ -13,20 +13,24 @@
 
 <body>
     <section>
+        <div class="bg-secondary bg-gradient">
+            <h3 class="text-info text-center mb-0">Welcome to Phone Market</h3>
+            <p class="text-warning text-center m-0 p-3">Find your desire Phone</p>
+        </div>
         <div class="container">
 
             <!-- -----------------------adding input field and button --------------------------->
+            <!-- <span class="text-danger"> No date found</span> -->
 
-            <h3 class="text-info text-center mb-0">Phone Market</h3>
-            <p class="text-warning text-center mt-0">Find your desire Phone</p>
             <div class="input-group my-3 w-50 mx-auto">
                 <input id="input-value" type="text" class="form-control" placeholder="Search phone..."
                     aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button onclick="getPhone()" class="btn btn-outline-primary" type="button"
                     id="button-addon2">Search</button>
             </div>
-            <div id="see-all" class="d-flex justify-content-end">
-                <button class="btn btn-info text-white">See All <span><img src="./arrow-right.svg"></span></button>
+            <div id="see-all" class="d-flex justify-content-end mt-0 mb-2">
+                <button onclick="showAllMobile()" class="btn btn-info text-white">See All <span><img
+                            src="./arrow-right.svg"></span></button>
             </div>
             <!-------------- Details Secion here ---------------- -->
 
@@ -53,6 +57,8 @@
 
             </div>
         </div>
+
+
     </section>
 
 

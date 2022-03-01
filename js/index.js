@@ -89,11 +89,11 @@ const cardDetails = (detailsValue) => {
         .then(data => showDetailOnTop(data.data))
 }
 
-
 //--------------------------------- show details funcion -----------------------------------
 
 const showDetailOnTop = (phone) => {
-    // console.log(phone)
+    console.log(phone)
+
 
     detailTag.innerHTML = '';
     const div = document.createElement('div');
@@ -104,13 +104,24 @@ const showDetailOnTop = (phone) => {
             <div class="card-body">
             <h6 class="card-title  my-0"><span class="fw-bold">Name: </span><span class="text-success">${phone.name}</span></h6>
             <p class="card-text my-0 fw-normal"><span class="fw-bold">Brand: </span> <span class="text-success">${phone.brand}</span></p>
-            <p class="card-text  my-0"><span class="fw-bold">Date: </span><span class="text-success">${phone.releaseDate}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">Date: </span><span class="text-success">${(phone.releaseDate) == "" ? ' <span class="text-danger"> No Date Found</span>' : phone.releaseDate}</span></p>
             <p class="card-text  my-0"><span class="fw-bold">Storage: </span><span class="text-success">${phone.mainFeatures.storage}</span></p>
             <p class="card-text  my-0"><span class="fw-bold">Display: </span><span class="text-success">${phone.mainFeatures.displaySize}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">ChipSet: </span><span class="text-success">${phone.mainFeatures.chipSet}</span></p>
             <p class="card-text  my-0"><span class="fw-bold">Sensors: </span><span class="text-success">${phone.mainFeatures.sensors}</span></p>
-            <p class="card-text  my-0"><span class="fw-bold">Bluetooth: </span><span class="text-success">${phone?.others?.GPS}</span></p>
-            <p class="card-text  my-0"><span class="fw-bold">GPS: </span><span class="text-success">${phone?.others?.WLAN}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">NFC: </span><span class="text-success">${(phone?.others?.NFC) == undefined ? ' <span class="text-danger"> No data found</span>' : phone?.others?.NFC}</span></p>
+            <p class="card-text  my-0"><span class="fw-bold">Radio: </span><span class="text-success">${(phone?.others?.Radio) == undefined ? ' <span class="text-danger"> No data found</span>' : phone?.others?.Radio}</span></p>
       </div> 
         `
     detailTag.appendChild(div)
+}
+
+const showAllMobile = () => {
+    fetch('https://openapi.programming-hero.com/api/phones?search')
+        .then(res => res.json())
+        .then(phones => showAllPhone(phones))
+}
+
+const showAllPhone = (phones) => {
+    console.log(phones)
 }
