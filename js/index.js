@@ -1,16 +1,32 @@
 const getPhone = () => {
     const inputValue = document.getElementById('input-value')
-    const inputValueData = inputValue.value;
+    let inputValueData = inputValue.value;
+    const error = document.getElementById('error')
+    // alert('Please enter a number')
+    if (inputValueData == '') {
+        error.innerHTML = `
+        <div class="alert alert-danger alert-dismissible ">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Oohs!</strong> Type your desire phone.
+        </div>
+        `
+    }
 
-    const url = `https://openapi.programming-hero.com/api/phones?search=${inputValueData}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayPhone(data.data))
+    else {
+        const url = `https://openapi.programming-hero.com/api/phones?search=${inputValueData}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayPhone(data.data))
+    }
+
+
+
 }
 
 const displayPhone = (phones) => {
     // console.log(phones)
     const displayPhoneData = document.getElementById('main-details');
+    displayPhoneData.innerHTML = ''
     phones.forEach(phone => {
         console.log(phone)
         // const phone20 = phone.slice(0, 20);
@@ -42,10 +58,10 @@ const cardDetails = (detailsValue) => {
 const showDetailOnTop = (phone) => {
     console.log(phone)
     const detailTag = document.getElementById('details-section');
+    detailTag.innerHTML = '';
     const div = document.createElement('div');
     div.innerHTML = `
      <div class="card w-25 mx-auto">
-        
            <div class="p-3"><img src="${phone.image}" class="card-img-top"> </div>
            <h4 class="text-center text-info">Details</h4>
             <div class="card-body">
