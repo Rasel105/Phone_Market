@@ -7,6 +7,9 @@ const getPhone = () => {
     // const error = document.getElementById('error')
     // alert('Please enter a number')
     if (inputValueData == '') {
+
+        // -------------------------------Blank input error handle ---------------------------
+
         error.innerHTML = `
         <div class="alert alert-danger alert-dismissible ">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -26,12 +29,20 @@ const getPhone = () => {
          </div>
          </div>
             `
+        error.innerHTML = ''
+
     }
+    inputValue.value = '';
 }
 
 const displayPhone = (phones) => {
     // console.log(phones)
-    if (phones.length == 0) {
+    const phoneSlice = phones.slice(0, 20)
+    // console.log(phoneSlice)
+    if (phoneSlice.length == 0) {
+
+        //------------------------ Not Found error handle --------------------------
+
         error.innerHTML = `
          <div class="alert alert-danger alert-dismissible ">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -39,9 +50,10 @@ const displayPhone = (phones) => {
         </div>
         `
     }
+
     const displayPhoneData = document.getElementById('main-details');
     displayPhoneData.innerHTML = ''
-    phones.forEach(phone => {
+    phoneSlice.forEach(phoneSlices => {
         // console.log(phone)
         // const phone20 = phone.slice(0, 20);
         // console.log(phone20)
@@ -49,12 +61,12 @@ const displayPhone = (phones) => {
         div.className = "col-md-4 col-sm-6 mb-5 rounded"
         div.innerHTML = `
              <div class="card ">
-               <div class="p-3"><img src="${phone.image}" class="card-img-top"> </div>
+               <div class="p-3"><img src="${phoneSlices.image}" class="card-img-top"> </div>
                 <div class="card-body">
-                <h6 class="card-title">Name: <span class="text-success">${phone.phone_name}</span></h6>
-                <p class="card-text">Brand: <span class="text-success">${phone.brand}</span></p>
+                <h6 class="card-title">Name: <span class="text-success">${phoneSlices.phone_name}</span></h6>
+                <p class="card-text">Brand: <span class="text-success">${phoneSlices.brand}</span></p>
                 <div class="text-center">
-                <button onclick="cardDetails('${phone.slug}')" class="btn btn-info text-white">Explore</button>
+                <button onclick="cardDetails('${phoneSlices.slug}')" class="btn btn-info text-white">Explore</button>
                 </div>
                 </div>
           </div> `
@@ -64,14 +76,19 @@ const displayPhone = (phones) => {
 }
 
 const cardDetails = (detailsValue) => {
-    const url = `https://openapi.programming-hero.com/api/phone/${detailsValue}`
+    console.log(detailsValue)
+    const detailsSecond = detailsValue.slice(0, 19)
+    const url = `https://openapi.programming-hero.com/api/phone/${detailsSecond}`
     fetch(url)
         .then(res => res.json())
         .then(data => showDetailOnTop(data.data))
 }
 
+
+//--------------------------------- show details funcion -----------------------------------
+
 const showDetailOnTop = (phone) => {
-    // console.log(phone)
+    console.log(phone)
     const detailTag = document.getElementById('details-section');
     detailTag.innerHTML = '';
     const div = document.createElement('div');
