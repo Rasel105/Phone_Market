@@ -102,6 +102,7 @@ const showDetailOnTop = (phone) => {
 
     detailTag.innerHTML = '';
     const div = document.createElement('div');
+
     div.innerHTML = `
      <div class="card w-50 mx-auto">
            <div class="p-3 w-50 mx-auto"><img src="${phone.image}" class="card-img-top"></div>
