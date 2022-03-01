@@ -1,11 +1,15 @@
 
 const spinner = document.getElementById('spinner-secion');
-const error = document.getElementById('error')
 const detailTag = document.getElementById('details-section');
 const displayPhoneData = document.getElementById('main-details');
+const error = document.getElementById('error');
+
 const getPhone = () => {
+
+    // INPUT VALUE FIND 
+
     const inputValue = document.getElementById('input-value')
-    let inputValueData = inputValue.value;
+    const inputValueData = inputValue.value;
     // const error = document.getElementById('error')
     // alert('Please enter a number')
     if (inputValueData == '') {
@@ -38,6 +42,8 @@ const getPhone = () => {
     inputValue.value = '';
 }
 
+//---------------------------- DISPLAY PHONES DATA--------------------------
+
 const displayPhone = (phones) => {
     // console.log(phones)
     const phoneSlice = phones.slice(0, 20)
@@ -54,7 +60,6 @@ const displayPhone = (phones) => {
         `
         displayPhoneData.innerHTML = ''
     }
-
 
     detailTag.innerHTML = ''
     displayPhoneData.innerHTML = ''
@@ -115,6 +120,8 @@ const showDetailOnTop = (phone) => {
         `
     detailTag.appendChild(div)
 }
+
+// SEE ALL BUTTON 
 
 const showAllMobile = () => {
     fetch('https://openapi.programming-hero.com/api/phones?search')
