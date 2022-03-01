@@ -17,15 +17,17 @@
 
             <!-- -----------------------adding input field and button --------------------------->
 
-            <h3 class="text-info text-center mt-3">Phone Market</h3>
-            <p class="text-warning text-center">Find your desire Phone</p>
+            <h3 class="text-info text-center mb-0">Phone Market</h3>
+            <p class="text-warning text-center mt-0">Find your desire Phone</p>
             <div class="input-group my-3 w-50 mx-auto">
                 <input id="input-value" type="text" class="form-control" placeholder="Search phone..."
                     aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button onclick="getPhone()" class="btn btn-outline-primary" type="button"
                     id="button-addon2">Search</button>
             </div>
-
+            <div id="see-all" class="d-flex justify-content-end">
+                <button class="btn btn-info text-white">See All <span><img src="./arrow-right.svg"></span></button>
+            </div>
             <!-------------- Details Secion here ---------------- -->
 
             <section>
@@ -33,6 +35,12 @@
 
                 </div>
             </section>
+
+            <!-- Spinner section  -->
+
+            <div id="spinner-secion" class="text-center my-3">
+
+            </div>
 
             <!-- Error Hanling -->
             <div id="error" class="w-50 mx-auto">
