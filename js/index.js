@@ -1,4 +1,19 @@
 
+
+
+const searchBtn = document.getElementById("button-addon2");
+const inputValue = document.getElementById('input-value')
+
+inputValue.addEventListener("keypress", function (event) {
+    // event.preventDefault();\
+    console.log("keypress", event.key);
+    if (event.key === 'Enter') {
+        console.log("ASDF")
+        searchBtn.click()
+    }
+
+});
+
 const spinner = document.getElementById('spinner-secion');
 const detailTag = document.getElementById('details-section');
 const displayPhoneData = document.getElementById('main-details');
@@ -99,10 +114,8 @@ const cardDetails = (detailsValue) => {
 const showDetailOnTop = (phone) => {
     console.log(phone)
 
-
     detailTag.innerHTML = '';
     const div = document.createElement('div');
-
     div.innerHTML = `
      <div class="card w-50 mx-auto">
            <div class="p-3 w-50 mx-auto"><img src="${phone.image}" class="card-img-top"></div>
